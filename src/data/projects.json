@@ -1,0 +1,69 @@
+[
+  {
+    "id": "bright-map",
+    "title": "Bright Map",
+    "tagline": "Security scanner with pluggable binary-analysis tools",
+    "description": "A comprehensive security scanning tool integrating multiple binary analysis frameworks. Designed to assist in identifying vulnerabilities and analyzing potentially malicious executables efficiently.",
+    "tech": ["Python", "pestudio", "Ghidra", "capa"],
+    "category": "security",
+    "github": "https://github.com/THARUN9959/bright-map",
+    "demo": null,
+    "featured": true,
+    "private": true
+  },
+  {
+    "id": "hybrid-cryptographic",
+    "title": "Hybrid Cryptographic Framework",
+    "tagline": "IoT-based hybrid cryptography for secure communication",
+    "description": "An advanced cryptographic framework tailored for Internet of Things (IoT) devices, combining symmetric and asymmetric algorithms to ensure data integrity and confidentiality with low overhead.",
+    "tech": ["Python", "Cryptography", "IoT", "Security"],
+    "category": "security",
+    "github": "https://github.com/THARUN9959/Hybrid-Cryptographic-Framework-for-IoT-Based",
+    "demo": null,
+    "featured": true
+  },
+  {
+    "id": "clause-clear-ai",
+    "title": "ClauseClear AI",
+    "tagline": "AI-powered legal document analysis and simplification",
+    "description": "A web application that leverages generative AI to analyze complex legal clauses and present them in clear, easily understandable terms for non-lawyers.",
+    "tech": ["React", "Python", "Generative AI", "NLP"],
+    "category": "web",
+    "github": "https://github.com/THARUN9959/Clause-Clear-AI",
+    "demo": null,
+    "featured": true
+  },
+  {
+    "id": "smarttutor",
+    "title": "SmartTutor",
+    "tagline": "Intelligent tutoring system with personalized learning paths",
+    "description": "An interactive web-based tutoring platform that adapts to student performance, offering personalized quizzes and learning resources to optimize educational outcomes.",
+    "tech": ["JavaScript", "HTML", "CSS", "Machine Learning"],
+    "category": "web",
+    "github": "https://github.com/THARUN9959/SmartTutor",
+    "demo": null,
+    "featured": true
+  },
+  {
+    "id": "summai",
+    "title": "SummAI",
+    "tagline": "Automated text summarization engine",
+    "description": "A streamlined tool for extracting key points from long articles and documents using state-of-the-art NLP models, saving time for researchers and readers.",
+    "tech": ["Python", "Transformers", "React", "FastAPI"],
+    "category": "web",
+    "github": "https://github.com/THARUN9959/SummAI",
+    "demo": null,
+    "featured": false
+  },
+  {
+    "id": "health-monitor",
+    "title": "Health Monitor",
+    "tagline": "Android app for tracking vitals and health metrics",
+    "description": "A comprehensive mobile health tracking application. Features include vital signs monitoring, medication reminders, and historical health data visualization.",
+    "tech": ["Kotlin", "Android SDK", "Jetpack Compose", "Room"],
+    "category": "android",
+    "github": "https://github.com/THARUN9959/Health-Monitor_App",
+    "demo": null,
+    "featured": true
+  }
+]

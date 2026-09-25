@@ -1,0 +1,137 @@
+.app-shell {
+  display: grid;
+  grid-template-columns: minmax(280px, 38%) 1fr;
+  min-height: 100vh;
+  transition: filter 0.4s ease, transform 0.4s ease;
+}
+
+.app-shell.receded {
+  filter: blur(4px) brightness(0.6);
+  transform: scale(0.97);
+  pointer-events: none;
+}
+
+.panel {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  padding: clamp(2rem, 5vw, 4rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.content {
+  padding: clamp(1.5rem, 4vw, 4rem);
+  padding-bottom: 8rem; /* Extra space at the bottom */
+}
+
+/* Mobile Layout */
+@media (max-width: 900px) {
+  .app-shell {
+    grid-template-columns: 1fr;
+  }
+  
+  .panel {
+    position: relative;
+    height: auto;
+    padding-bottom: 2rem;
+  }
+}
+
+/* Typography for layout */
+.role {
+  font-size: 1.1rem;
+  opacity: 0.7;
+  margin-bottom: 2rem;
+}
+
+.panel-social {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+/* --- Skills Section --- */
+.skills-section { 
+  padding: 4rem 0; 
+  position: relative; 
+}
+
+.skill-group {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  margin-bottom: 2rem;
+}
+.skill-group.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 0.75rem;
+}
+
+.skill-chip {
+  padding: 0.35rem 0.9rem;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  font-size: 0.85rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: default;
+}
+.skill-chip:hover {
+  transform: translateY(-3px) translateZ(10px);
+  box-shadow: 0 4px 14px color-mix(in srgb, var(--glow) 40%, transparent);
+}
+
+/* --- Connect Section --- */
+.connect-section {
+  position: relative;
+  padding: 5rem 0 3rem;
+  text-align: left;
+}
+
+.connect-glow {
+  position: absolute;
+  inset: -20% -10%;
+  background: radial-gradient(circle at 30% 50%, var(--glow) 0%, transparent 60%);
+  opacity: 0.1;
+  animation: breathe 4s ease-in-out infinite;
+  z-index: -1;
+  pointer-events: none;
+}
+@keyframes breathe {
+  0%, 100% { opacity: 0.1; }
+  50% { opacity: 0.2; }
+}
+
+.connect-links {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.connect-btn {
+  padding: 0.7rem 1.4rem;
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--text);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+.connect-btn:hover {
+  transform: translateY(-2px);
+  background: color-mix(in srgb, var(--accent) 15%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skill-chip:hover { transform: none; box-shadow: none; }
+  .connect-glow { animation: none; opacity: 0.12; }
+  .connect-btn:hover { transform: none; }
+}

@@ -1,0 +1,189 @@
+/* Entrance Triggers */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.project-card {
+  opacity: 0;
+  transform: perspective(800px) rotateY(-15deg) translateZ(-100px);
+  transition: opacity 0.6s ease, transform 0.6s var(--motion-easing);
+  transform-style: preserve-3d;
+  cursor: pointer;
+  background: color-mix(in srgb, var(--bg) 85%, white 5%);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.project-card.visible {
+  opacity: 1;
+  transform: perspective(800px) rotateY(0) translateZ(0);
+}
+
+/* inner z-layers — only active while useTilt is applying rotation via inline style */
+.card-title {
+  transform: translateZ(20px);
+  color: var(--accent);
+}
+.card-tagline {
+  transform: translateZ(12px);
+  opacity: 0.85;
+  margin-top: 0.5rem;
+}
+.card-tech {
+  transform: translateZ(6px);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 1.5rem;
+}
+.tech-chip {
+  font-size: 0.75rem;
+  padding: 0.2rem 0.6rem;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  opacity: 0.8;
+}
+
+.private-badge {
+  display: inline-block;
+  transform: rotateZ(-4deg) translateZ(15px);
+  font-size: 0.7rem;
+  padding: 0.15rem 0.5rem;
+  background: var(--glow);
+  color: var(--bg);
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+  align-self: flex-start;
+}
+
+/* Hero Animations */
+.hero-section {
+  position: relative;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+}
+.hero-canvas-wrap {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0;
+  animation: heroFadeIn 0.8s ease forwards;
+}
+.hero-text {
+  position: relative;
+  z-index: 1;
+  max-width: 480px;
+}
+.hero-cta {
+  display: inline-block;
+  margin-top: 1.5rem;
+  font-weight: 600;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  background: var(--accent);
+  color: var(--bg);
+  border: none;
+}
+.hero-cta:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+@keyframes heroFadeIn {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.card-planet {
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  transform: translateZ(25px); /* sits above title in the z-stack */
+  pointer-events: none; /* Let hover pass through to the card */
+}
+
+.planet-canvas-wrap {
+  width: 100%;
+  height: 100%;
+}
+
+.planet-fallback {
+  width: 40px;
+  height: 40px;
+  border: 2px solid;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  transform: translateZ(25px);
+}
+.planet-fallback span {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+}
+
+/* Detail Transition */
+.project-detail {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  max-width: 700px;
+  max-height: 80vh;
+  padding: 3rem 2rem 2rem;
+  overflow-y: auto;
+  background: color-mix(in srgb, var(--bg) 95%, white 5%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  opacity: 0;
+  transform: perspective(1000px) translateZ(-150px) scale(0.85);
+  transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.2,0.8,0.2,1);
+  z-index: 50;
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8),
+              0 0 60px rgba(var(--glow-rgb, 255,255,255), 0.1);
+}
+
+.project-detail.entered {
+  opacity: 1;
+  transform: perspective(1000px) translateZ(0) scale(1);
+}
+
+.detail-icon-slot {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1rem;
+  opacity: 0;
+  animation: iconSettle 0.3s ease forwards;
+}
+@keyframes iconSettle { to { opacity: 1; } }
+
+.detail-content {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+.detail-content.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .project-card, .project-detail, .app-shell, .scene, .hero-canvas-wrap {
+    transition: none !important;
+    transform: none !important;
+    animation: none !important;
+  }
+}

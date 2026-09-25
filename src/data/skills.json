@@ -1,0 +1,7 @@
+{
+  "Languages": ["Python", "Kotlin", "JavaScript", "HTML/CSS"],
+  "ML": ["PyTorch", "Conv-KAN", "EfficientNetV2", "Transformers"],
+  "Android": ["Jetpack Compose", "Room", "WorkManager", "Coroutines"],
+  "Web": ["React", "Three.js", "Vite", "Flask"],
+  "Security & Tools": ["Ghidra", "capa", "Git", "Figma"]
+}
