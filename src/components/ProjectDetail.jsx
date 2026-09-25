@@ -63,20 +63,23 @@ export default function ProjectDetail({ project, sourceRect, accentColor, closin
 
         <div className={`detail-content ${planetSettled && !closing ? 'visible' : ''}`}>
           <h2 style={{ textAlign: 'center', marginBottom: '1rem', color: accentColor }}>{project.title}</h2>
-          <p style={{ textAlign: 'center', marginBottom: '2rem', fontSize: '1.1rem', opacity: 0.9 }}>{project.tagline}</p>
-          <p style={{ lineHeight: 1.8, marginBottom: '2rem' }}>{project.description}</p>
+          <p style={{ textAlign: 'center', marginBottom: '1rem', fontSize: '1.1rem', opacity: 0.9 }}>{project.tagline}</p>
+          <p className="detail-description" style={{ lineHeight: 1.7, marginBottom: '1.25rem' }}>{project.description}</p>
           
-          <div style={{ marginBottom: '2rem' }}>
+          <div style={{ marginBottom: '1.25rem' }}>
             <h4 style={{ opacity: 0.7, textTransform: 'uppercase', fontSize: '0.8rem', letterSpacing: '0.05em' }}>Technologies</h4>
             <div className="card-tech" style={{ marginTop: '0.5rem', justifyContent: 'center' }}>
               {project.tech.map((t) => <span key={t} className="tech-chip">{t}</span>)}
             </div>
           </div>
           
-          <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', alignItems: 'center' }}>
-            {project.private && <span className="private-badge" style={{ margin: 0, transform: 'none' }}>Private repo</span>}
+          <div className="detail-links">
+            {project.private && <span className="private-badge" style={{ margin: 0 }}>Private repo</span>}
             {project.github && (
-              <a href={project.github} target="_blank" rel="noreferrer" style={{ background: accentColor, color: 'var(--bg)', padding: '0.5rem 1rem', borderRadius: '8px', fontWeight: 'bold' }}>View on GitHub</a>
+              <a className="detail-github" href={project.github} target="_blank" rel="noreferrer" style={{ background: accentColor }}>View on GitHub ↗</a>
+            )}
+            {project.demo && (
+              <a className="detail-github" href={project.demo} target="_blank" rel="noreferrer" style={{ background: accentColor }}>Open live demo ↗</a>
             )}
           </div>
         </div>

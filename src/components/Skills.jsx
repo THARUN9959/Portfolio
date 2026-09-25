@@ -4,9 +4,13 @@ import skillsData from '../data/skills.json';
 import SkillChip from './SkillChip';
 
 export default function Skills() {
+  const sectionRef = useRef();
+  const visible = useInView(sectionRef);
+
   return (
-    <section id="skills" className="skills-section">
-      <h2 style={{ marginBottom: '2rem' }}>Skills</h2>
+    <section ref={sectionRef} id="skills" className={`skills-section page-reveal ${visible ? 'visible' : ''}`}>
+      <div className="section-kicker">Tools of the trade</div>
+      <h2 className="section-heading">Skills & technologies<span aria-hidden="true">.</span></h2>
       <div className="skills-groups">
         {Object.entries(skillsData).map(([category, items]) => (
           <SkillGroup key={category} category={category} items={items} />

@@ -1,22 +1,27 @@
+import { useRef } from 'react';
+import { useInView } from '../hooks/useInView';
+
 export default function Connect() {
+  const sectionRef = useRef();
+  const visible = useInView(sectionRef);
+
   return (
-    <section id="connect" className="connect-section">
-      <div className="connect-glow" />
-      <h2 style={{ marginBottom: '1rem' }}>Let's connect</h2>
-      <p style={{ opacity: 0.8, maxWidth: '400px', marginBottom: '2rem' }}>
-        Open to opportunities in ML, Android, and security-focused projects.
-      </p>
-      <div className="connect-links">
-        <a href="https://github.com/THARUN9959" target="_blank" rel="noreferrer" className="connect-btn">
-          GitHub
-        </a>
-        <a href="mailto:tharun.test@example.com" className="connect-btn">
-          Email
-        </a>
-        <a href="/resume.pdf" download className="connect-btn">
-          Resume
-        </a>
+    <section ref={sectionRef} id="connect" className={`connect-section page-reveal ${visible ? 'visible' : ''}`}>
+      <div className="connect-callout">
+        <div className="connect-glow" />
+        <div className="connect-message">
+          <div className="section-kicker">Have something in mind?</div>
+          <h2 className="section-heading">Let’s build something<span aria-hidden="true">.</span></h2>
+          <p className="connect-copy">Open to opportunities in ML, Android, and security-focused projects. Get in touch through my GitHub profile.</p>
+        </div>
+        <div className="connect-action">
+          <span className="connect-action-label">OPEN TO COLLABORATION</span>
+          <a href="https://github.com/THARUN9959" target="_blank" rel="noreferrer" className="connect-btn primary">
+            <span>Find me on GitHub</span><span aria-hidden="true">↗</span>
+          </a>
+        </div>
       </div>
+      <footer className="site-footer"><span>© {new Date().getFullYear()} Tharun</span><span>Designed & built with curiosity</span></footer>
     </section>
   );
 }

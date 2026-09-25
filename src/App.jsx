@@ -6,6 +6,8 @@ import ProjectGrid from './components/ProjectGrid'
 import ProjectDetail from './components/ProjectDetail'
 import Skills from './components/Skills'
 import Connect from './components/Connect'
+import CursorParticles from './three/CursorParticles'
+import ScrollTicker from './components/ScrollTicker'
 import projects from './data/projects.json'
 
 function App() {
@@ -34,10 +36,12 @@ function App() {
 
   return (
     <>
+      <CursorParticles color={theme.accent} glow={theme.glow} />
       <div className={`app-shell ${selectedId && !closing ? 'receded' : ''}`}>
         <Panel />
         <main className="content">
           <Hero theme={theme} />
+          <ScrollTicker />
           <ProjectGrid onSelect={handleSelect} accentColor={theme.accent} />
           <Skills />
           <Connect />

@@ -17,9 +17,20 @@ export default function ProjectCard({ project, index, onClick, accentColor }) {
       onClick={(e) => onClick(project.id, e.currentTarget)}
       tabIndex={0}
       role="button"
-      onKeyDown={(e) => e.key === 'Enter' && onClick(project.id, e.currentTarget)}
+      aria-label={`View details for ${project.title}`}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          onClick(project.id, e.currentTarget);
+        }
+      }}
     >
       {project.private && <span className="private-badge">Private repo</span>}
+      <span className="card-index">PROJECT / {String(index + 1).padStart(2, '0')}</span>
+      <span className="card-arrow" aria-hidden="true">
+        <span className="card-arrow-label">Visit</span>
+        <svg viewBox="0 0 24 24" focusable="false"><path d="M7 17 17 7M8 7h9v9" /></svg>
+      </span>
       <div className="card-planet">
         <ProjectPlanet category={project.category} color={accentColor} />
       </div>

@@ -1,57 +1,58 @@
-:root {
-  /* Fallback colors just in case session storage hasn't set them yet */
-  --accent: #7C9EFF;
-  --bg: #0A0E1A;
-  --glow: #4ADEDE;
-  --text: #E8ECFF;
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap');
 
-  /* Global UI settings */
-  --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  --motion-easing: cubic-bezier(0.2, 0.8, 0.2, 1);
+:root {
+  --accent: #a8b5ff;
+  --bg: #090a0f;
+  --glow: #70e1d1;
+  --text: #f0f0f5;
+  --muted: #92939f;
+  --surface: #11131b;
+  --line: rgba(255, 255, 255, .09);
+  --font-main: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'DM Mono', monospace;
+  --motion-easing: cubic-bezier(.2, .8, .2, 1);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+  scroll-padding-top: 2rem;
 }
+
+* { box-sizing: border-box; }
 
 body {
   margin: 0;
-  padding: 0;
-  background-color: var(--bg);
-  color: var(--text);
-  font-family: var(--font-main);
-  transition: background-color 0.4s ease, color 0.4s ease;
+  min-width: 320px;
+  min-height: 100vh;
   overflow-x: hidden;
+  color: var(--text);
+  background:
+    radial-gradient(ellipse at 85% 8%, color-mix(in srgb, var(--accent) 9%, transparent), transparent 32rem),
+    var(--bg);
+  font-family: var(--font-main);
+  transition: background-color .4s ease, color .4s ease;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  margin: 0 0 1rem 0;
-  font-weight: 700;
-  letter-spacing: -0.03em;
+body::before {
+  position: fixed;
+  z-index: -1;
+  inset: 0;
+  background-image: linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.018) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(to bottom, black, transparent 75%);
+  content: '';
+  pointer-events: none;
 }
 
-p {
-  line-height: 1.6;
-  opacity: 0.85;
-}
+::selection { color: var(--bg); background: var(--accent); }
+h1, h2, h3, h4, p { margin-top: 0; }
+h1, h2, h3, h4 { letter-spacing: -.045em; }
+p { color: var(--muted); line-height: 1.75; }
+a { color: var(--accent); text-decoration: none; }
+button, a { -webkit-tap-highlight-color: transparent; }
+a:focus-visible, button:focus-visible, [role='button']:focus-visible { outline: 2px solid var(--glow); outline-offset: 4px; }
 
-a {
-  color: var(--accent);
-  text-decoration: none;
-  transition: opacity 0.2s ease;
-}
-
-a:hover {
-  opacity: 0.8;
-}
-
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.2);
-}
-::-webkit-scrollbar-thumb {
-  background: var(--accent);
-  border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--glow);
-}
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { border: 2px solid var(--bg); border-radius: 10px; background: color-mix(in srgb, var(--accent) 65%, transparent); }
